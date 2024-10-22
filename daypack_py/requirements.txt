@@ -1,0 +1,6 @@
+gradio==3.35.2
+tidevice==0.10.3
+pure-python-adb==0.3.0.dev0
+argparse==1.4.0
+pytest==7.3.1
+setuptools>=61.0
