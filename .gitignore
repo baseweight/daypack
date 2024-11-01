@@ -1,0 +1,183 @@
+# Android specific
+*.apk
+*.aar
+*.ap_
+*.aab
+*.dex
+*.class
+bin/
+gen/
+out/
+.gradle/
+build/
+local.properties
+proguard/
+*.log
+.navigation/
+captures/
+
+# Android Studio / IntelliJ IDEA
+*.iml
+.idea/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+
+# Keystore files
+*.jks
+*.keystore
+
+# External native build folder
+.externalNativeBuild
+.cxx/
+
+# Google Services
+google-services.json
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# WebView ML Shell specific
+webview-ml-shell/build/
+webview-ml-shell/release/
+webview-ml-shell/*.iml
+webview-ml-shell/local.properties
+
+# ML model files (if not meant to be versioned)
+*.tflite
+*.pb
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Python-related (if using any Python scripts)
+*.pyc
+__pycache__/
+venv/
+
+# iOS specific for ios-webview-coreml-shell
+ios-webview-coreml-shell/*.xcodeproj/
+ios-webview-coreml-shell/*.xcworkspace/
+ios-webview-coreml-shell/xcuserdata/
+ios-webview-coreml-shell/*.pbxuser
+!ios-webview-coreml-shell/default.pbxuser
+ios-webview-coreml-shell/*.mode1v3
+!ios-webview-coreml-shell/default.mode1v3
+ios-webview-coreml-shell/*.mode2v3
+!ios-webview-coreml-shell/default.mode2v3
+ios-webview-coreml-shell/*.perspectivev3
+!ios-webview-coreml-shell/default.perspectivev3
+ios-webview-coreml-shell/*.xccheckout
+ios-webview-coreml-shell/*.moved-aside
+ios-webview-coreml-shell/DerivedData/
+ios-webview-coreml-shell/*.hmap
+ios-webview-coreml-shell/*.ipa
+ios-webview-coreml-shell/*.dSYM.zip
+ios-webview-coreml-shell/*.dSYM
+
+# CocoaPods
+ios-webview-coreml-shell/Pods/
+ios-webview-coreml-shell/*.xcconfig
+ios-webview-coreml-shell/Podfile.lock
+
+# Carthage
+ios-webview-coreml-shell/Carthage/Build/
+
+# Swift Package Manager
+ios-webview-coreml-shell/.build/
+ios-webview-coreml-shell/Package.resolved
+
+# fastlane (already covered in the main .gitignore)
+
+# Code Injection
+ios-webview-coreml-shell/injected_container.swift
+
+# App packaging
+ios-webview-coreml-shell/*.ipa
+ios-webview-coreml-shell/*.dSYM.zip
+ios-webview-coreml-shell/*.dSYM
+
+# Playgrounds
+ios-webview-coreml-shell/timeline.xctimeline
+ios-webview-coreml-shell/playground.xcworkspace
+
+# Swift Package Manager
+ios-webview-coreml-shell/.swiftpm
+
+# Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
+ios-webview-coreml-shell/.swiftpm/xcode/package.xcworkspace/
+ios-webview-coreml-shell/.swiftpm/xcode/xcuserdata/
+
+# CoreML model files (if not meant to be versioned)
+ios-webview-coreml-shell/*.mlmodel
+
+# Python-specific ignores for daypack_py
+daypack_py/__pycache__/
+daypack_py/*.py[cod]
+daypack_py/*$py.class
+
+# Virtual environments
+daypack_py/venv/
+daypack_py/.env
+daypack_py/.venv
+daypack_py/env/
+
+# Distribution / packaging
+daypack_py/build/
+daypack_py/dist/
+daypack_py/*.egg-info/
+daypack_py/.eggs/
+
+# PyInstaller
+daypack_py/*.manifest
+daypack_py/*.spec
+
+# Jupyter Notebook
+daypack_py/.ipynb_checkpoints
+
+# pytest
+daypack_py/.pytest_cache/
+daypack_py/htmlcov/
+
+# mypy
+daypack_py/.mypy_cache/
+
+# Logs
+daypack_py/*.log
+
+# OS-specific
+daypack_py/.DS_Store
+daypack_py/Thumbs.db
+
+# IDE-specific (add more if needed)
+daypack_py/.vscode/
+daypack_py/.idea/
+
+# Dependency management
+daypack_py/pip-lock.txt
+daypack_py/poetry.lock
+
+# Compiled Python files
+daypack_py/*.pyc
+
+# Coverage reports
+daypack_py/.coverage
+daypack_py/coverage.xml
+
+# Temporary files
+daypack_py/*.tmp
+daypack_py/*.bak
+daypack_py/*.swp

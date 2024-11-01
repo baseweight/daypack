@@ -41,7 +41,16 @@ class Device:
         print(f"Updated launch_url to {hosted_uri} in {strings_xml_path}")
 
     def set_ios_launch_path(self, hosted_uri):
+        config_path = os.path.join(IOS_PROJECT_PATH, "config.json")
         
+        config = {
+            "webviewUrl": hosted_uri
+        }
+        
+        with open(config_path, 'w') as f:
+            json.dump(config, f)
+        
+        print(f"Updated webview URL to {hosted_uri} in {config_path}")        
 
 
     def build(self, hosted_uri):
