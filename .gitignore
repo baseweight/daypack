@@ -69,60 +69,60 @@ __pycache__/
 venv/
 
 # iOS specific for ios-webview-coreml-shell
-ios-webview-coreml-shell/*.xcodeproj/
-ios-webview-coreml-shell/*.xcworkspace/
-ios-webview-coreml-shell/xcuserdata/
-ios-webview-coreml-shell/*.pbxuser
-!ios-webview-coreml-shell/default.pbxuser
-ios-webview-coreml-shell/*.mode1v3
-!ios-webview-coreml-shell/default.mode1v3
-ios-webview-coreml-shell/*.mode2v3
-!ios-webview-coreml-shell/default.mode2v3
-ios-webview-coreml-shell/*.perspectivev3
-!ios-webview-coreml-shell/default.perspectivev3
-ios-webview-coreml-shell/*.xccheckout
-ios-webview-coreml-shell/*.moved-aside
-ios-webview-coreml-shell/DerivedData/
-ios-webview-coreml-shell/*.hmap
-ios-webview-coreml-shell/*.ipa
-ios-webview-coreml-shell/*.dSYM.zip
-ios-webview-coreml-shell/*.dSYM
+ios-webview-coreml-shell/daypack/*.xcodeproj/
+ios-webview-coreml-shell/daypack/*.xcworkspace/
+ios-webview-coreml-shell/daypack/xcuserdata/
+ios-webview-coreml-shell/daypack/*.pbxuser
+!ios-webview-coreml-shell/daypack/default.pbxuser
+ios-webview-coreml-shell/daypack/*.mode1v3
+!ios-webview-coreml-shell/daypack/default.mode1v3
+ios-webview-coreml-shell/daypack/*.mode2v3
+!ios-webview-coreml-shell/daypack/default.mode2v3
+ios-webview-coreml-shell/daypack/*.perspectivev3
+!ios-webview-coreml-shell/daypack/default.perspectivev3
+ios-webview-coreml-shell/daypack/*.xccheckout
+ios-webview-coreml-shell/daypack/*.moved-aside
+ios-webview-coreml-shell/daypack/DerivedData/
+ios-webview-coreml-shell/daypack/*.hmap
+ios-webview-coreml-shell/daypack/*.ipa
+ios-webview-coreml-shell/daypack/*.dSYM.zip
+ios-webview-coreml-shell/daypack/*.dSYM
 
 # CocoaPods
-ios-webview-coreml-shell/Pods/
-ios-webview-coreml-shell/*.xcconfig
-ios-webview-coreml-shell/Podfile.lock
+ios-webview-coreml-shell/daypack/Pods/
+ios-webview-coreml-shell/daypack/*.xcconfig
+ios-webview-coreml-shell/daypack/Podfile.lock
 
 # Carthage
-ios-webview-coreml-shell/Carthage/Build/
+ios-webview-coreml-shell/daypack/Carthage/Build/
 
 # Swift Package Manager
-ios-webview-coreml-shell/.build/
-ios-webview-coreml-shell/Package.resolved
+ios-webview-coreml-shell/daypack/.build/
+ios-webview-coreml-shell/daypack/Package.resolved
 
 # fastlane (already covered in the main .gitignore)
 
 # Code Injection
-ios-webview-coreml-shell/injected_container.swift
+ios-webview-coreml-shell/daypack/injected_container.swift
 
 # App packaging
-ios-webview-coreml-shell/*.ipa
-ios-webview-coreml-shell/*.dSYM.zip
-ios-webview-coreml-shell/*.dSYM
+ios-webview-coreml-shell/daypack/*.ipa
+ios-webview-coreml-shell/daypack/*.dSYM.zip
+ios-webview-coreml-shell/daypack/*.dSYM
 
 # Playgrounds
-ios-webview-coreml-shell/timeline.xctimeline
-ios-webview-coreml-shell/playground.xcworkspace
+ios-webview-coreml-shell/daypack/timeline.xctimeline
+ios-webview-coreml-shell/daypack/playground.xcworkspace
 
 # Swift Package Manager
-ios-webview-coreml-shell/.swiftpm
+ios-webview-coreml-shell/daypack/.swiftpm
 
 # Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
-ios-webview-coreml-shell/.swiftpm/xcode/package.xcworkspace/
-ios-webview-coreml-shell/.swiftpm/xcode/xcuserdata/
+ios-webview-coreml-shell/daypack/.swiftpm/xcode/package.xcworkspace/
+ios-webview-coreml-shell/daypack/.swiftpm/xcode/xcuserdata/
 
 # CoreML model files (if not meant to be versioned)
-ios-webview-coreml-shell/*.mlmodel
+ios-webview-coreml-shell/daypack/*.mlmodel
 
 # Python-specific ignores for daypack_py
 daypack_py/__pycache__/
