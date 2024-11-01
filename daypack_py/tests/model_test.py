@@ -1,5 +1,5 @@
 import unittest
-from model import Model
+from daypack_py.src.model import Model
 
 class TestModel(unittest.TestCase):
     def setUp(self):

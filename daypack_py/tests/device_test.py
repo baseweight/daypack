@@ -1,5 +1,5 @@
 import unittest
-from device import Device, DeviceManager
+from daypack_py.src.device import Device, DeviceManager
 
 class TestDevice(unittest.TestCase):
     def setUp(self):

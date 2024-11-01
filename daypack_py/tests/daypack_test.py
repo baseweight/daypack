@@ -1,7 +1,7 @@
 import unittest
 import gradio as gr
-from daypack import DayPack
-from device import Device, DeviceManager
+from daypack_py.src.daypack import DayPack
+from daypack_py.src.device import DeviceManager
 
 class TestDayPack(unittest.TestCase):
     def setUp(self):

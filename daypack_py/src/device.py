@@ -1,5 +1,6 @@
 import os
 import xml.etree.ElementTree as ET
+import json
 import tidevice
 from ppadb.client import Client as AdbClient
 
@@ -49,6 +50,7 @@ class Device:
         
         with open(config_path, 'w') as f:
             json.dump(config, f)
+
         
         print(f"Updated webview URL to {hosted_uri} in {config_path}")        
 

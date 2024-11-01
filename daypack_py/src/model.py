@@ -1,3 +1,5 @@
+import json
+
 class Model:
     def __init__(self, path):
         self.data = None
@@ -6,7 +8,6 @@ class Model:
         
 
     def load_from_json(self, file_path):
-        import json
         self.file_path = file_path
         try:
             with open(file_path, 'r') as file:
