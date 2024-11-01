@@ -2,6 +2,7 @@ import os
 import xml.etree.ElementTree as ET
 import json
 import tidevice
+import subprocess
 from ppadb.client import Client as AdbClient
 
 ANDROID_PROJECT_PATH = ""
@@ -61,6 +62,28 @@ class Device:
         elif self.deviceType == "iOS":
             self.set_ios_launch_path(hosted_uri)
 
+    def install(self):
+        if self.deviceType == "Android":
+            # Build the Android APK
+            android_build_cmd = f"cd {ANDROID_PROJECT_PATH} && ./gradlew assembleDebug"
+            subprocess.run(android_build_cmd, shell=True, check=True)
+
+            # Get path to built APK
+            apk_path = os.path.join(ANDROID_PROJECT_PATH, "app", "build", "outputs", "apk", "debug", "app-debug.apk")
+
+            # Install the APK using ADB
+            self.adb_client.install(apk_path)
+        elif self.deviceType == "iOS":
+            # Build the iOS IPA
+            ios_build_cmd = f"cd {IOS_PROJECT_PATH} && xcodebuild -scheme DayPack -configuration Debug -derivedDataPath build"
+            subprocess.run(ios_build_cmd, shell=True, check=True)
+
+            # Get path to built IPA
+            app_path = os.path.join(IOS_PROJECT_PATH, "build", "Build", "Products", "Debug-iphoneos", "DayPack.app")
+
+            # Install the app using tidevice
+            self.ios_device.app_install(app_path)
+
     
 class DeviceManager:
     def __init__(self):
@@ -70,5 +93,32 @@ class DeviceManager:
     def get_devices(self):
         androids = self.adb_client.devices()
         #TODO: Figure out how to get a list of iOS devices from Python
-        #TODO: Use our device 
-        return androids
+        ios_devices = []
+        try:
+            # Get list of all connected iOS devices
+            for device in tidevice.Usbmux().devices():
+                ios_devices.append(device)
+        except Exception as e:
+            print(f"Error getting iOS devices: {e}")
+        devices = []
+        
+        # Add Android devices
+        for android_device in androids:
+            device = Device()
+            device.set_device_info(
+                android_device.serial,
+                f"Android Device ({android_device.serial})", 
+                "Android"
+            )
+            devices.append(device)
+
+        # Add iOS devices  
+        for ios_device in ios_devices:
+            device = Device()
+            device.set_device_info(
+                ios_device.udid,
+                f"iOS Device ({ios_device.udid})",
+                "iOS"
+            )
+            devices.append(device)
+        return devices
