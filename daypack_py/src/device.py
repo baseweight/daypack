@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 import json
 import tidevice
 import subprocess
+import shutil
 from ppadb.client import Client as AdbClient
 
 ANDROID_PROJECT_PATH = ""
@@ -54,12 +55,31 @@ class Device:
 
         
         print(f"Updated webview URL to {hosted_uri} in {config_path}")        
+ 
+    def setup_android_project(self):
+        # Create a temporary directory for the Android project
+        temp_dir = tempfile.mkdtemp()
 
+        # Copy Android template project to temp directory
+        shutil.copytree(ANDROID_PROJECT_PATH, temp_dir, dirs_exist_ok=True)
+        
+        # Update project path to use temp directory
+        global ANDROID_PROJECT_PATH
+        ANDROID_PROJECT_PATH = temp_dir
+        
+        print(f"Copied Android template project to {temp_dir}")
+
+        return
+    
+    def setup_ios_project(self):
+        return
 
     def build(self, hosted_uri):
         if self.deviceType == "Android":
+            self.setup_android_project()
             self.set_android_launch_path(hosted_uri)
         elif self.deviceType == "iOS":
+            self.set_ios_project()
             self.set_ios_launch_path(hosted_uri)
 
     def install(self):
