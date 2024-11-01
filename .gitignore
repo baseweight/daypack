@@ -138,8 +138,8 @@ daypack_py/env/
 # Distribution / packaging
 daypack_py/build/
 daypack_py/dist/
-daypack_py/*.egg-info/
-daypack_py/.eggs/
+daypack_py/src/*.egg-info/
+daypack_py/src/.eggs/
 
 # PyInstaller
 daypack_py/*.manifest
@@ -181,3 +181,40 @@ daypack_py/coverage.xml
 daypack_py/*.tmp
 daypack_py/*.bak
 daypack_py/*.swp
+
+# TypeScript/JavaScript
+daypack_js/node_modules/
+daypack_js/dist/
+daypack_js/coverage/
+daypack_js/.nyc_output/
+daypack_js/.npm/
+
+# IDE and editor files
+daypack_js/.vscode/
+daypack_js/.idea/
+daypack_js/*.sublime-*
+daypack_js/.settings/
+
+# Logs
+daypack_js/logs/
+daypack_js/*.log
+daypack_js/npm-debug.log*
+daypack_js/yarn-debug.log*
+daypack_js/yarn-error.log*
+
+# Environment files
+daypack_js/.env
+daypack_js/.env.local
+daypack_js/.env.*.local
+
+# Build artifacts
+daypack_js/*.tsbuildinfo
+daypack_js/.cache/
+
+# Package manager files
+daypack_js/package-lock.json
+daypack_js/yarn.lock
+
+# OS specific
+daypack_js/.DS_Store
+daypack_js/Thumbs.db
