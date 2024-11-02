@@ -13,7 +13,7 @@ struct ContentView: View {
     
     init() {
         // Load URL from config.json at initialization
-        self.webviewUrl = Self.loadConfiguration() ?? "http://localhost:3000"
+        self.webviewUrl = Self.loadConfiguration() ?? "https://baseweight.ai"
     }
     
     private static func loadConfiguration() -> String? {
