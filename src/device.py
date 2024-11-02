@@ -123,8 +123,13 @@ class DeviceManager:
         self.ios_device = tidevice.Device()
         self.adb_client = AdbClient(host="127.0.0.1", port=5037)
 
-    def get_devices(self):
-        androids = self.adb_client.devices()
+    def devices(self):
+        androids = []
+        try:
+            androids = self.adb_client.devices()
+        except Exception as e:
+            print(f"Error getting Android devices: {e}")
+
         #TODO: Figure out how to get a list of iOS devices from Python
         ios_devices = []
         try:

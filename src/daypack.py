@@ -1,7 +1,7 @@
+import argparse
 import gradio as gr
 from gradio import Interface
 from device import DeviceManager, Device
-import argparse
 
 class DayPack:
     def __init__(self, interface):
@@ -46,9 +46,8 @@ class DayPack:
 
     def start(self):
         return
-
-if __name__ == "__main__":
-
+ 
+def main():
     parser = argparse.ArgumentParser(description="DayPack CLI")
     parser.add_argument("--install", action="store_true", help="Install the daypack on the device")
     parser.add_argument("--devices", action="store_true", help="List available devices")
@@ -56,8 +55,6 @@ if __name__ == "__main__":
     parser.add_argument("--start", action="store_true", help="Start the DayPack")
 
     args = parser.parse_args()
-
-    daypack = DayPack()
 
     if args.install:
         daypack.install()

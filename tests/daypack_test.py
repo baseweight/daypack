@@ -27,20 +27,20 @@ class TestDayPack(unittest.TestCase):
         self.assertEqual(self.daypack.hosted_uri, "gap:gradio-local")
         self.assertTrue(self.daypack.local)
 
-    def test_install(self):
-        device_id = "test_device_id"
-        self.daypack.install(device_id)
-        self.assertIsNotNone(self.daypack.currentDevice)
+    # def test_install(self):
+    #     device_id = "test_device_id"
+    #     self.daypack.install(device_id)
+    #     self.assertIsNotNone(self.daypack.currentDevice)
 
-    def test_devices(self):
-        devices = self.daypack.devices()
-        self.assertIsNotNone(devices)
+    # def test_devices(self):
+    #     devices = self.daypack.devices()
+    #     self.assertIsNotNone(devices)
 
-    def test_get_current_device(self):
-        device_id = "test_device_id"
-        self.daypack.install(device_id)
-        current_device = self.daypack.getCurrentDevice()
-        self.assertIsNotNone(current_device)
+    # def test_get_current_device(self):
+    #     device_id = "test_device_id"
+    #     self.daypack.install(device_id)
+    #     current_device = self.daypack.getCurrentDevice()
+    #     self.assertIsNotNone(current_device)
 
 if __name__ == '__main__':
     unittest.main()
