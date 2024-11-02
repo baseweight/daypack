@@ -16,7 +16,7 @@ classifiers = [
 ]
 keywords = ["device", "management", "model", "installation"]
 dependencies = [
-    "gradio==3.35.2",
+    "gradio>=3.35.2",
     "tidevice==0.10.3",
     "pure-python-adb==0.3.0.dev0",
     "argparse==1.4.0",
@@ -28,11 +28,6 @@ dev = ["pytest"]
 
 [project.scripts]
 daypack = "daypack:main"
-
-[tool.setuptools.packages.find]
-where = ["src", "ios-webview-coreml-shell", "webview-ml-shell"]
-include = ["daypack*"]
-exclude = ["tests*"]
 
 [tool.pytest.ini_options]
 addopts = [

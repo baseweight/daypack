@@ -8,12 +8,12 @@ import tempfile
 from importlib.resources import files
 from ppadb.client import Client as AdbClient
 
-# Update the default paths to use package resources
-ANDROID_PROJECT_PATH = str(files('daypack').joinpath('templates/android'))
-IOS_PROJECT_PATH = str(files('daypack').joinpath('templates/ios'))
-
-
 class Device:
+
+    # Update the default paths to use package resources
+    ANDROID_PROJECT_PATH = str(files('daypack').joinpath('templates/android'))
+    IOS_PROJECT_PATH = str(files('daypack').joinpath('templates/ios'))
+
     def __init__(self, deviceType, deviceId):
         self.deviceType = deviceType
         self.deviceId = deviceId
@@ -30,7 +30,7 @@ class Device:
     
     def set_android_launch_path(self, hosted_uri):
         # Path to the strings.xml file
-        strings_xml_path = os.path.join(ANDROID_PROJECT_PATH, "res", "values", "strings.xml")
+        strings_xml_path = os.path.join(self.ANDROID_PROJECT_PATH, "res", "values", "strings.xml")
 
         # Parse the XML file
         tree = ET.parse(strings_xml_path)
@@ -48,7 +48,7 @@ class Device:
         print(f"Updated launch_url to {hosted_uri} in {strings_xml_path}")
 
     def set_ios_launch_path(self, hosted_uri):
-        config_path = os.path.join(IOS_PROJECT_PATH, "config.json")
+        config_path = os.path.join(self.IOS_PROJECT_PATH, "config.json")
         
         config = {
             "webviewUrl": hosted_uri
@@ -65,11 +65,10 @@ class Device:
         temp_dir = tempfile.mkdtemp()
 
         # Copy Android template project to temp directory
-        shutil.copytree(ANDROID_PROJECT_PATH, temp_dir, dirs_exist_ok=True)
+        shutil.copytree(self.ANDROID_PROJECT_PATH, temp_dir, dirs_exist_ok=True)
         
         # Update project path to use temp directory
-        global ANDROID_PROJECT_PATH
-        ANDROID_PROJECT_PATH = temp_dir
+        self.ANDROID_PROJECT_PATH = temp_dir
         
         print(f"Copied Android template project to {temp_dir}")
 
@@ -80,11 +79,10 @@ class Device:
         temp_dir = tempfile.mkdtemp()
 
         # Copy iOS template project to temp directory
-        shutil.copytree(IOS_PROJECT_PATH, temp_dir, dirs_exist_ok=True)
+        shutil.copytree(self.IOS_PROJECT_PATH, temp_dir, dirs_exist_ok=True)
         
         # Update project path to use temp directory
-        global IOS_PROJECT_PATH
-        IOS_PROJECT_PATH = temp_dir
+        self.IOS_PROJECT_PATH = temp_dir
         
         print(f"Copied iOS template project to {temp_dir}")
         return
@@ -100,21 +98,21 @@ class Device:
     def install(self):
         if self.deviceType == "Android":
             # Build the Android APK
-            android_build_cmd = f"cd {ANDROID_PROJECT_PATH} && ./gradlew assembleDebug"
+            android_build_cmd = f"cd {self.ANDROID_PROJECT_PATH} && ./gradlew assembleDebug"
             subprocess.run(android_build_cmd, shell=True, check=True)
 
             # Get path to built APK
-            apk_path = os.path.join(ANDROID_PROJECT_PATH, "app", "build", "outputs", "apk", "debug", "app-debug.apk")
+            apk_path = os.path.join(self.ANDROID_PROJECT_PATH, "app", "build", "outputs", "apk", "debug", "app-debug.apk")
 
             # Install the APK using ADB
             self.adb_client.install(apk_path)
         elif self.deviceType == "iOS":
             # Build the iOS IPA
-            ios_build_cmd = f"cd {IOS_PROJECT_PATH} && xcodebuild -scheme DayPack -configuration Debug -derivedDataPath build"
+            ios_build_cmd = f"cd {self.IOS_PROJECT_PATH} && xcodebuild -scheme DayPack -configuration Debug -derivedDataPath build"
             subprocess.run(ios_build_cmd, shell=True, check=True)
 
             # Get path to built IPA
-            app_path = os.path.join(IOS_PROJECT_PATH, "build", "Build", "Products", "Debug-iphoneos", "DayPack.app")
+            app_path = os.path.join(self.IOS_PROJECT_PATH, "build", "Build", "Products", "Debug-iphoneos", "DayPack.app")
 
             # Install the app using tidevice
             self.ios_device.app_install(app_path)
