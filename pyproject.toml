@@ -30,7 +30,7 @@ dev = ["pytest"]
 daypack = "daypack:main"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["src", "ios-webview-coreml-shell", "webview-ml-shell"]
 include = ["daypack*"]
 exclude = ["tests*"]
 

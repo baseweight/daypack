@@ -29,6 +29,7 @@ class DayPack:
     # This installs the app package onto the device
     def install(self, deviceId):
         self.currentDevice = self.deviceManager.getDeviceById(deviceId);
+        self.currentDevice.install()
         return
 
     # This gets a list of currently installed devices

@@ -4,10 +4,14 @@ import json
 import tidevice
 import subprocess
 import shutil
+import tempfile
+from importlib.resources import files
 from ppadb.client import Client as AdbClient
 
-ANDROID_PROJECT_PATH = ""
-IOS_PROJECT_PATH = ""
+# Update the default paths to use package resources
+ANDROID_PROJECT_PATH = str(files('daypack').joinpath('templates/android'))
+IOS_PROJECT_PATH = str(files('daypack').joinpath('templates/ios'))
+
 
 class Device:
     def __init__(self, deviceType, deviceId):
@@ -72,6 +76,17 @@ class Device:
         return
     
     def setup_ios_project(self):
+        # Create a temporary directory for the iOS project
+        temp_dir = tempfile.mkdtemp()
+
+        # Copy iOS template project to temp directory
+        shutil.copytree(IOS_PROJECT_PATH, temp_dir, dirs_exist_ok=True)
+        
+        # Update project path to use temp directory
+        global IOS_PROJECT_PATH
+        IOS_PROJECT_PATH = temp_dir
+        
+        print(f"Copied iOS template project to {temp_dir}")
         return
 
     def build(self, hosted_uri):

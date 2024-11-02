@@ -125,62 +125,62 @@ ios-webview-coreml-shell/daypack/.swiftpm/xcode/xcuserdata/
 ios-webview-coreml-shell/daypack/*.mlmodel
 
 # Python-specific ignores for daypack_py
-daypack_py/__pycache__/
-daypack_py/*.py[cod]
-daypack_py/*$py.class
+__pycache__/
+*.py[cod]
+*$py.class
 
 # Virtual environments
-daypack_py/venv/
-daypack_py/.env
-daypack_py/.venv
-daypack_py/env/
+venv/
+.env
+.venv
+env/
 
 # Distribution / packaging
-daypack_py/build/
-daypack_py/dist/
-daypack_py/src/*.egg-info/
-daypack_py/src/.eggs/
+build/
+dist/
+src/*.egg-info/
+src/.eggs/
 
 # PyInstaller
-daypack_py/*.manifest
-daypack_py/*.spec
+*.manifest
+*.spec
 
 # Jupyter Notebook
-daypack_py/.ipynb_checkpoints
+.ipynb_checkpoints
 
 # pytest
-daypack_py/.pytest_cache/
-daypack_py/htmlcov/
+.pytest_cache/
+htmlcov/
 
 # mypy
-daypack_py/.mypy_cache/
+.mypy_cache/
 
 # Logs
-daypack_py/*.log
+*.log
 
 # OS-specific
-daypack_py/.DS_Store
-daypack_py/Thumbs.db
+.DS_Store
+Thumbs.db
 
 # IDE-specific (add more if needed)
-daypack_py/.vscode/
-daypack_py/.idea/
+.vscode/
+.idea/
 
 # Dependency management
-daypack_py/pip-lock.txt
-daypack_py/poetry.lock
+pip-lock.txt
+poetry.lock
 
 # Compiled Python files
-daypack_py/*.pyc
+*.pyc
 
 # Coverage reports
-daypack_py/.coverage
-daypack_py/coverage.xml
+.coverage
+coverage.xml
 
 # Temporary files
-daypack_py/*.tmp
-daypack_py/*.bak
-daypack_py/*.swp
+*.tmp
+*.bak
+*.swp
 
 # TypeScript/JavaScript
 daypack_js/node_modules/
