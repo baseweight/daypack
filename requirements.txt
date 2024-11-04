@@ -1,4 +1,4 @@
-gradio==3.35.2
+gradio==5.0.0
 tidevice==0.10.3
 pure-python-adb==0.3.0.dev0
 argparse==1.4.0
