@@ -160,3 +160,10 @@ class DeviceManager:
             )
             devices.append(device)
         return devices
+    
+    def getDeviceById(self, device_id):
+        devices = self.devices()
+        for device in devices:
+            if device.id == device_id:
+                return device
+        return None

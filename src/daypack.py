@@ -28,9 +28,40 @@ class DayPack:
 
     # This installs the app package onto the device
     def install(self, deviceId):
-        self.currentDevice = self.deviceManager.getDeviceById(deviceId);
+        self.currentDevice = self.deviceManager.getDeviceById(deviceId)
         self.currentDevice.install()
         return
+    
+    def launch(self, deviceId=None):
+        devices = self.devices()
+        if not devices:
+            raise Exception("No devices found. Please connect a device.")
+        
+        if deviceId is not None:
+            device = self.deviceManager.getDeviceById(deviceId)
+        else:
+            device = devices[0]
+        
+        # Setup project based on device type
+        if device.platform == "ios":
+            self.currentDevice = self.deviceManager.getDeviceById(device.id)
+            self.currentDevice.setup_ios_project()
+        elif device.platform == "android": 
+            self.currentDevice = self.deviceManager.getDeviceById(device.id)
+            self.currentDevice.setup_android_project()
+        else:
+            raise Exception(f"Unsupported platform: {device.platform}")
+
+        # Launch Gradio demo
+        self.block.launch(share=True)
+        
+        # Set the URL in the mobile app
+        self.set_uri(self.block.share_url)
+        
+        # Install and launch on device
+        self.currentDevice.install()
+        self.currentDevice.launch()
+        
 
     # This gets a list of currently installed devices
     # A DayPack can only have one device at at time installed.  We can have numerous daypacks 
