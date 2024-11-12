@@ -3,6 +3,9 @@ package ai.baseweight.daypack
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ai.baseweight.daypack.databinding.ActivityMainBinding
+import android.webkit.JavascriptInterface
+import org.json.JSONArray
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,14 +47,14 @@ class MainActivity : AppCompatActivity() {
             // TODO: Implement native model listing
             val models = arrayOf<String>()
             val jsonModels = JSONArray(models)
-            binding.webview.evaluateJavascript("$callback($jsonModels)", null)
+            context.binding.webview.evaluateJavascript("$callback($jsonModels)", null)
         }
 
         @JavascriptInterface 
         fun isModelInstalled(modelId: String, callback: String) {
             // TODO: Implement model existence check
             val installed = false
-            binding.webview.evaluateJavascript("$callback($installed)", null)
+            context.binding.webview.evaluateJavascript("$callback($installed)", null)
         }
 
         @JavascriptInterface
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 put("inputs", JSONArray())
                 put("outputs", JSONArray()) 
             }
-            binding.webview.evaluateJavascript("$callback($metadata)", null)
+            context.binding.webview.evaluateJavascript("$callback($metadata)", null)
         }
 
         @JavascriptInterface
@@ -72,7 +75,7 @@ class MainActivity : AppCompatActivity() {
             val inputsJson = JSONObject(inputs)
             
             val outputs = JSONObject()
-            binding.webview.evaluateJavascript("$callback($outputs)", null)
+            context.binding.webview.evaluateJavascript("$callback($outputs)", null)
         }
     }
 

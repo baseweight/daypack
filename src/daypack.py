@@ -43,14 +43,14 @@ class DayPack:
             device = devices[0]
         
         # Setup project based on device type
-        if device.platform == "ios":
+        if device.deviceType == "iOS":
             self.currentDevice = self.deviceManager.getDeviceById(device.id)
             self.currentDevice.setup_ios_project()
-        elif device.platform == "android": 
+        elif device.deviceType == "Android": 
             self.currentDevice = self.deviceManager.getDeviceById(device.id)
             self.currentDevice.setup_android_project()
         else:
-            raise Exception(f"Unsupported platform: {device.platform}")
+            raise Exception(f"Unsupported platform: {device.deviceType}")
 
         # Launch Gradio demo
         self.block.launch(share=True)
