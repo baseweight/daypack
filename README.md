@@ -17,6 +17,15 @@ dp.start()
 The goal of DayPack is to allow rapid development of OnDevice Machine Learning models without Machine Learning engineers to have to learn C++, and for Machine Learning Engineers to be able to leverage
 existing Gradio applications.
 
+# Non-Python Requirements for Android Deployment
+* Android Studio 
+* An Android Device with Debugging Enabled
+
+# Non-Python Requirements for iOS Deployment
+* XCode
+* A valid developer certificate
+* ios-deploy
+
 ## Why DayPack?
 
 Because the name backpack was already taken by other Python packages, and to keep with the outdoor theme of BaseWeight.
