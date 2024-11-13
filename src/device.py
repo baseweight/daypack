@@ -18,11 +18,12 @@ class Device:
     def __init__(self, deviceType, deviceId):
         self.deviceType = deviceType
         self.id = deviceId
+        self.adb_client = AdbClient(host="127.0.0.1", port=5037)
         return
     
     def set_android_launch_path(self, hosted_uri):
         # Path to the strings.xml file
-        strings_xml_path = os.path.join(self.ANDROID_PROJECT_PATH, "res", "values", "strings.xml")
+        strings_xml_path = os.path.join(self.ANDROID_PROJECT_PATH, "app", "src", "main", "res", "values", "strings.xml")
 
         # Parse the XML file
         tree = ET.parse(strings_xml_path)
@@ -96,8 +97,9 @@ class Device:
             # Get path to built APK
             self.app_path = os.path.join(self.ANDROID_PROJECT_PATH, "app", "build", "outputs", "apk", "debug", "app-debug.apk")
 
-            # Install the APK using ADB 
-            self.adb_client.install(self.app_path)
+            # Install the APK using adb from the shell
+            android_install_cmd = f"adb install {self.app_path}"
+            subprocess.run(android_install_cmd, shell=True, check=True)
         elif self.deviceType == "iOS":
             # Build the iOS IPA
             ios_build_cmd = f"cd {self.IOS_PROJECT_PATH} && xcodebuild -scheme DayPack -configuration Debug -derivedDataPath build"
@@ -109,10 +111,10 @@ class Device:
 
     def launch(self):
         if self.deviceType == "Android":
-            # Launch the Android app using package name
-            package_name = "com.daypack.app"
-            launch_cmd = f"monkey -p {package_name} 1"
-            self.adb_client.shell(self.id, launch_cmd)
+            # Launch the Android app using package name (TODO: Make this customizable)
+            android_deploy_cmd = f"adb shell am start -n ai.baseweight.daypack/ai.baseweight.daypack.MainActivity"
+            subprocess.run(android_deploy_cmd, shell=True, check=True)
+
         elif self.deviceType == "iOS":
             # Launch the iOS app using ios-deploy   
             bundle_id = "com.daypack.app"

@@ -40,6 +40,7 @@ class DayPack:
         if deviceId is not None:
             self.currentDevice = self.deviceManager.getDeviceById(deviceId)
         else:
+            print("Setting first device as default")
             self.currentDevice = devices[0]
         
         # Launch Gradio demo
@@ -47,7 +48,6 @@ class DayPack:
         
         # Set the URL in the mobile app
         self.set_uri(self.block.share_url)
-        
         # Install and launch on device
         self.currentDevice.build(self.hosted_uri)
         self.currentDevice.install()
