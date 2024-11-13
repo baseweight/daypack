@@ -60,7 +60,7 @@ class Device:
         shutil.copytree(self.ANDROID_PROJECT_PATH, temp_dir, dirs_exist_ok=True)
         
         # Update project path to use temp directory, include webview_ml_shell
-        self.ANDROID_PROJECT_PATH = os.path.join(temp_dir, "webview_ml_shell")
+        self.ANDROID_PROJECT_PATH = os.path.join(temp_dir, "webview-ml-shell")
         
         print(f"Copied Android template project to {temp_dir}")
 

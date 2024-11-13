@@ -38,20 +38,10 @@ class DayPack:
             raise Exception("No devices found. Please connect a device.")
         
         if deviceId is not None:
-            device = self.deviceManager.getDeviceById(deviceId)
+            self.currentDevice = self.deviceManager.getDeviceById(deviceId)
         else:
-            device = devices[0]
+            self.currentDevice = devices[0]
         
-        # Setup project based on device type
-        if device.deviceType == "iOS":
-            self.currentDevice = self.deviceManager.getDeviceById(device.id)
-            self.currentDevice.setup_ios_project()
-        elif device.deviceType == "Android": 
-            self.currentDevice = self.deviceManager.getDeviceById(device.id)
-            self.currentDevice.setup_android_project()
-        else:
-            raise Exception(f"Unsupported platform: {device.deviceType}")
-
         # Launch Gradio demo
         self.block.launch(share=True)
         
@@ -59,6 +49,7 @@ class DayPack:
         self.set_uri(self.block.share_url)
         
         # Install and launch on device
+        self.currentDevice.build(self.hosted_uri)
         self.currentDevice.install()
         self.currentDevice.launch()
         
