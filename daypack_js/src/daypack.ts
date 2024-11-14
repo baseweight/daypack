@@ -48,6 +48,56 @@ interface DayPackInterface {
     callModel(modelId: string, inputs: {[key: string]: any}, callback: (outputs: {[key: string]: any}) => void): void;
 }
 
+// Default implementation of DayPack interface
+class DayPack implements DayPackInterface {
+    getInstalledModels(callback: (models: string[]) => void): void {
+        // Default empty implementation
+        callback([]);
+    }
+
+    isModelInstalled(modelId: string, callback: (installed: boolean) => void): void {
+        // Default empty implementation  
+        callback(false);
+    }
+
+    getModelMetadata(modelId: string, callback: (metadata: {
+        name: string,
+        path: string, 
+        type: string,
+        inputs: Array<{
+            name: string,
+            dtype: string,
+            shape: number[]
+        }>,
+        outputs: Array<{
+            name: string,
+            dtype: string, 
+            shape: number[]
+        }>
+    }) => void): void {
+        // Default empty implementation
+        callback({
+            name: '',
+            path: '',
+            type: '',
+            inputs: [],
+            outputs: []
+        });
+    }
+
+    callModel(modelId: string, inputs: {[key: string]: any}, callback: (outputs: {[key: string]: any}) => void): void {
+        // Default empty implementation
+        callback({});
+    }
+}
+
+// Initialize global navigator.daypack
+if (typeof navigator !== 'undefined' && !navigator.daypack) {
+    navigator.daypack = new DayPack();
+}
+
+
+
 declare global {
     interface Navigator {
         daypack: DayPackInterface

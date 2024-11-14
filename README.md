@@ -32,6 +32,6 @@ Because the name backpack was already taken by other Python packages, and to kee
 
 ## Who is BaseWeight
 
-BaseWeight is a small one person company started by @infil00p.  If you are interested in contacting BaseWeight regarding consulting, funding, please visit [[baseweight.ai]].
+BaseWeight is a small one person company started by @infil00p.  If you are interested in contacting BaseWeight regarding consulting, funding, legal, please visit [[baseweight.ai]].
 
 Open Source Contributions such as PRs and Issues (including Feature Requests) are welcome.
