@@ -19,10 +19,17 @@ class DayPack:
     # You need to supply your Hugging Face credential here
     def set_uri(self, uri):
         self.local = False
+        # Daypack shouldn't destroy any custom header set by the user
+        self.block.head = self.block.head + self.packStrap.head_remote
         self.hosted_uri = uri
 
     def set_on_device(self):
         self.local = True
+        # Daypack shouldn't destroy any custom header set by the user
+        if self.currentDevice.deviceType == "Android":
+            self.block.head = self.block.head + self.packStrap.head_droid
+        else:
+            self.block.head = self.block.head + self.packStrap.head_ios
         # The scheme is an easter egg only real ones will understand
         self.hosted_uri = "gap:gradio-local"
 
@@ -69,6 +76,7 @@ class DayPack:
     def start(self):
         return
  
+# This was done in a fever dream and makes zero sense, TODO: Delete this.
 def main():
     parser = argparse.ArgumentParser(description="DayPack CLI")
     parser.add_argument("--install", action="store_true", help="Install the daypack on the device")

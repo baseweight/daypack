@@ -4,13 +4,10 @@
     "module": "commonjs",
     "declaration": true,
     "outDir": "./dist",
-    "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["es2015", "dom"],
-    "types": ["node"]
+    "lib": ["es2015", "dom"]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/*"],
 }

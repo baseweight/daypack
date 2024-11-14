@@ -53,3 +53,5 @@ declare global {
         daypack: DayPackInterface
     }
 }
+
+export {}
