@@ -1,13 +1,13 @@
 import argparse
-import gradio as gr
-from gradio import Interface
-from device import DeviceManager, Device
+from device import DeviceManager
+from packstrap import PackStrap
 
 class DayPack:
     def __init__(self, interface):
         self.block = interface
         # This should probably be a singleton
         self.deviceManager = DeviceManager()
+        self.packStrap = PackStrap()
 
     # Pack builds the DayPack application
     # This is the meat and potatoes of the app, and this is where we store the model 
