@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ai.baseweight.daypack.databinding.ActivityMainBinding
 import android.webkit.JavascriptInterface
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tflite.java.TfLiteNative
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -14,12 +16,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val tfLiteInitializeTask: Task = TfLiteNative.initialize(this)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         binding.webview.settings.javaScriptEnabled = true
         binding.webview.addJavascriptInterface(WebAppInterface(this), "AndroidMLExec")
         setContentView(binding.root);
         binding.webview.loadUrl(resources.getString(R.string.launch_url))
-        
     }
 
     /**
@@ -28,22 +31,37 @@ class MainActivity : AppCompatActivity() {
      */
     external fun stringFromJNI(): String
 
+    external fun isModelLoaded(modelId: String) : Boolean
+    external fun callModel(
+        inputNames: Array<String>,
+        inputShapes: Array<IntArray>,
+        inputBuffers: Array<ByteArray>,
+        outputNames: Array<String>, 
+        outputShapes: Array<IntArray>,
+        outputBuffers: Array<ByteArray>
+    )
+
     companion object {
         // Used to load the 'daypack' library on application startup.
         init {
+            System.loadLibrary("tflite-jni")
             System.loadLibrary("daypack")
         }
     }
 
     // Add this class
     class WebAppInterface(private val context: MainActivity) {
-        @JavascriptInterface
-        fun stringFromJNI(): String {
-            return context.stringFromJNI()
-        }
         
         @JavascriptInterface
         fun getInstalledModels(callback: String) {
+            // TODO: Implement native model listing
+            val models = arrayOf<String>()
+            val jsonModels = JSONArray(models)
+            context.binding.webview.evaluateJavascript("$callback($jsonModels)", null)
+        }
+
+        @JavascriptInterface
+        fun getLoadedModels(callback: String) {
             // TODO: Implement native model listing
             val models = arrayOf<String>()
             val jsonModels = JSONArray(models)

@@ -11,6 +11,21 @@ cmake_minimum_required(VERSION 3.22.1)
 # build script scope).
 project("daypack")
 
+
+find_package(tensorflowlite_jni_gms_client REQUIRED CONFIG)
+
+target_link_libraries(tflite-jni # your JNI lib target
+        tensorflowlite_jni_gms_client::tensorflowlite_jni_gms_client
+        android # other deps for your target
+        log)
+
+# Also add -DTFLITE_IN_GMSCORE -DTFLITE_WITH_STABLE_ABI
+# to the C/C++ compiler flags.
+
+add_compile_definitions(TFLITE_IN_GMSCORE)
+add_compile_definitions(TFLITE_WITH_STABLE_ABI)
+
+
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
