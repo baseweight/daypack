@@ -41,16 +41,19 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        prefab = true
     }
 }
 
 dependencies {
-
-    implementation("androidx.webkit:webkit:1.9.0")
+    implementation(libs.google.gson)
+    implementation(libs.androidx.webkit)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.play.services.gcm)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
